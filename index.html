@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JoKenPo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script>
+	// An array was options the computer can pick its choice from - Array para as opções que podem ser usadas
+var toPickFrom = [
+    "pedra",
+    "tesoura",
+    "papel"
+];
+
+function game() {
+    // Variáveis para guardar os pontos do jogador e pc
+    var pointsPlayer = 0;
+    var pointsComputer = 0;
+
+    // Criar um loop com while (O jogo vai rodar até que o jogador ou pc tenha o número de pontos para ganhar, no caso 3)
+    while (pointsPlayer < 3 && pointsComputer < 3) {
+        // Pergunte ao jogador qual opção 
+        var playerChoice = prompt('Digite "Pedra", "Papel ou "Tesoura".');
+
+        // Escolha do computador (aleatório)
+        var computerChoice = toPickFrom[Math.floor(Math.random() * toPickFrom.length)];
+
+        // Antes de comparar os resultados, converter a escolha do jogador para letra minúscula 
+     	playerChoice = playerChoice.toLowerCase();
+
+        // Comparar os resultados e decidir quem ganhou o round
+        // Priemiro, todos os cenários que o jogador pode ganhar
+        if (playerChoice == "pedra" && computerChoice == "tesoura") {
+            pointsPlayer++;
+            alert("Você ganhou a rodada\n\nSeus pontos: " + pointsPlayer +"\nPontos do computador: " + pointsComputer);
+        } else if (playerChoice == "tesoura" && computerChoice == "papel") {
+            pointsPlayer++;
+            alert("Você ganou a rodada!\n\nSeus pontos: " + pointsPlayer +"\nPontos do computador: " + pointsComputer);
+        } else if (playerChoice == "papel" && computerChoice == "pedra") {
+            pointsPlayer++;
+            alert("Você ganhou a rodada!\n\nSeus pontos: " + pointsPlayer +"\nPontos do computador: " + pointsComputer);
+        } else if (playerChoice == "pedra" && computerChoice == "papel") { // Agora cenários em que o computador pode ganhar
+            pointsComputer++;
+            alert("O computador venceu a rodada!\n\nSeus pontos: " + pointsPlayer +"\nPontos do computador: " + pointsComputer);
+        } else if (playerChoice == "tesoura" && computerChoice == "pedra") {
+            pointsComputer++;
+            alert("O computador ganhou a rodada!\n\nSeus pontos: " + pointsPlayer +"\nPontos do computador: " + pointsComputer);
+        } else if (playerChoice == "papel" && computerChoice == "tesoura") {
+            pointsComputer++;
+            alert("O computador ganhou a rodada!\n\nSeus pontos: " + pointsPlayer +"\nPontos do computador: " + pointsComputer);
+        } else if (playerChoice == computerChoice) { // Empate, ambos fizeram a mesma escolha
+            alert("Empate! Ninguém adquiriu qualquer ponto!");
+        }
+    }
+
+    // This isn't necessarily needed, but let's do some extra output - Desnecessário, de acordo com as premissas do professor. Coloquei mais para estética
+    if (pointsPlayer == 3) {
+        document.getElementById('result').innerText = "Você venceu! =D ";
+    } else if (pointsComputer == 3) {
+        document.getElementById('result').innerText = "Você perdeu! D=";
+    }
+}
+</script>
+<body>
+    <button onclick="game()">Jogar!</button>
+    <div id="result"></div>
+Jogador que marcar 3 pontos vence a partida.</br>1 Ponto por rodada vencida.</br> Em caso de empate, nenhum jogador recebe pontos.
+</body>
+</html>
