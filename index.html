@@ -7,13 +7,13 @@
 </head>
 <script>
 	// An array was options the computer can pick its choice from - Array para as opções que podem ser usadas
-var toPickFrom = [
+var Escolhas = [
     "pedra",
     "tesoura",
     "papel"
 ];
 
-function game() {
+function Jogo() {
     // Variáveis para guardar os pontos do jogador e pc
     var pointsPlayer = 0;
     var pointsComputer = 0;
@@ -24,7 +24,7 @@ function game() {
         var playerChoice = prompt('Digite "Pedra", "Papel ou "Tesoura".');
 
         // Escolha do computador (aleatório)
-        var computerChoice = toPickFrom[Math.floor(Math.random() * toPickFrom.length)];
+        var computerChoice = Escolhas[Math.floor(Math.random() * Escolhas.length)];
 
         // Antes de comparar os resultados, converter a escolha do jogador para letra minúscula 
      	playerChoice = playerChoice.toLowerCase();
@@ -62,7 +62,7 @@ function game() {
 }
 </script>
 <body>
-    <button onclick="game()">Jogar!</button>
+    <button onclick="Jogo()">Jogar!</button>
     <div id="result"></div>
 Jogador que marcar 3 pontos vence a partida.</br>1 Ponto por rodada vencida.</br> Em caso de empate, nenhum jogador recebe pontos.
 </body>
